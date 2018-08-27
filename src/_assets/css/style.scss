@@ -57,6 +57,9 @@ html {
 
       .navbar-item{
         font-size: 1em;
+        &.is-active {
+          font-weight: 600;
+        }
       }
     }
 

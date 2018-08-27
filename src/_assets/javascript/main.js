@@ -1,6 +1,24 @@
 //= require bulma-carousel.min.js
+//= require gumshoe/dist/js/gumshoe.js
+//= require smooth-scroll/dist/smooth-scroll.js
 
 document.addEventListener('DOMContentLoaded', function () {
+
+  var scroll = new SmoothScroll('a[href*="#"]', {
+    easing: 'easeInOutQuint',
+    updateURL: false,
+    speed: 900,
+  });
+
+  gumshoe.init({
+  	selector: '[data-gumshoe] a', // Default link selector (must use a valid CSS selector)
+  	selectorHeader: '[data-gumshoe-header]', // Fixed header selector (must use a valid CSS selector)
+  	container: window, // The element to spy on scrolling in (must be a valid DOM Node)
+  	offset: 0, // Distance in pixels to offset calculations
+  	activeClass: 'is-active', // Class to apply to active navigation link and its parent list item
+  	scrollDelay: true // Wait until scrolling has stopped before updating the navigation
+  	//callback: function (nav) {} // Callback to run after setting active link
+  });
 
   // ghetto lightbox gallery
   var rootEl = document.documentElement;
@@ -51,8 +69,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   // Navbar
   // Get all "navbar-burger" elements
-  var $navBurgers = getAll('.navbar-burger');
-  //var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+  var $navbarBurgers = getAll('.navbar-burger');
 
   // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
@@ -73,9 +90,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  // close menu after navbar-item is clicked
+  var $navbarItems = getAll('.navbar-item');
+  if ($navbarItems.length > 0) {
+    $navbarItems.forEach(function($el){
+      $el.addEventListener('click', function(){
+        $burger = document.getElementById('navbarBurger');
+        if ($burger.classList.contains('is-active')) {
+          $burger.classList.remove('is-active');
+          document.getElementById($burger.dataset.target).classList.remove('is-active');
+        }
+      });
+    });
+  }
   // Initialize carousels
   var carousels = bulmaCarousel.attach();
-  
+
   function getAll(selector) {
     return Array.prototype.slice.call(document.querySelectorAll(selector), 0);
   }
