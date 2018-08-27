@@ -1,14 +1,209 @@
+@import url('https://fonts.googleapis.com/css?family=Satisfy|Source+Sans+Pro:300,400,600');
+
+$family-sans-serif: 'Source Sans Pro', sans-serif;
+$family-header: 'Satisfy', cursive;
+$input-focus-border-color: #fff;
+
+//$primary: #0A5C9B;
+//$primary2: #F1B501;
+//$primary3: #F18A01;
+
+$primary: #0572A7;
+//$golden: #E2AF2A;
+//$golden: #f9b862;
+$golden: #FFB800;
+//$primary2: #E28D2A;
+$tomato: #FF3500;
+
 @import 'bulma/bulma';
 @import 'libs/mixins';
+@import 'libs/bulma-carousel';
 
 html {
   body {
     @include font-smoothing(on);
+
+    .burger {
+      color: $grey-dark;
+    }
+
+    .is-golden {
+      background-color: lighten($golden, 10%);
+      color: #111;
+      border-color: transparent;
+      &:hover {
+        background-color: $golden;
+        color: #111;
+        border-color: transparent;
+      }
+    }
+
+    .lightbox-image{
+      cursor: pointer;
+    }
+
+    .modal-content {
+      width: $tablet !important;
+
+      @include from($tablet) {
+        width: $desktop !important;
+      }
+    }
+    nav {
+
+      &.is-fixed-top{
+        //z-index: 300 !important;
+      }
+
+      .navbar-item{
+        font-size: 1em;
+      }
+    }
+
+    #intro {
+      background-color: $white-ter;
+      padding: 0px;
+      background: url(https://images.unsplash.com/photo-1518980120692-3cfe64c152d0?&auto=format&fit=crop&w=1349&q=80);
+      background-repeat: no-repeat;
+      background-size: cover;
+      @include until($desktop) {
+        background-position: 0 0;
+      }
+      @include from($desktop) {
+        background-position: center bottom;
+      }
+      .sunglasses {
+        background: linear-gradient(45deg, rgba(0,0,0,0.9) 0%,rgba(5,114,167,0.25) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+
+      }
+      .awesome-title {
+        div {
+          height: 100%;
+          display: flex;
+          flex-wrap: wrap;
+          align-items: flex-end;
+          align-content: flex-end;
+          justify-content: flex-start;
+
+          .title {
+            width: 100%;
+            font-weight: 600;
+            color: #fff;
+          }
+
+          .subtitle {
+            width: 100%;
+            font-family: $family-header;
+            font-style: italic;
+            color: #fff;
+            padding: 1rem 0;
+          }
+        }
+      }
+
+      .awesome-form {
+        @include from($desktop) {
+          background-color: rgba(255,255,255, 0.75);
+        }
+        h2 {
+          padding-top: 1.5rem;
+          @include until($desktop) {
+            color: #fff;
+          }
+        }
+
+        form {
+          padding: 1rem 1rem;
+        }
+      }
+    }
+
+    #summaries {
+      padding: 0px;
+      .columns {
+        margin: 0px;
+        padding: 0px;
+
+        .column {
+          @include from($desktop) {
+            padding: 60px;
+          }
+          padding: 20px 0px;
+          background-color: $primary;
+          color: #fff;
+          .icon {
+            color: #E4F2FA;
+          }
+          .title {
+            color: #fff;
+            font-weight: 300;
+            line-height: 3.25rem;
+            margin: 0px;
+          }
+          &.is-middle {
+            background-color: lighten($primary, 5%);
+          }
+        }
+      }
+    }
   }
-  .burger {
-    color: $grey-dark;
+
+  .testimonial-section{
+    background: url(https://images.unsplash.com/photo-1529379912069-c915d30b58f9?&auto=format&fit=crop&w=1350&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 0px -25px;
+
+    .is-background {
+
+      &.testimonial {
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        align-content: center;
+        color: #fff;
+        min-height: 300px;
+        max-height: 300px;
+
+        @include from($desktop) {
+          min-height: 200px;
+          max-height: 200px;
+        }
+
+        blockquote{
+          background-color: rgba(0,0,0,0.5);
+          padding: 1em;
+          p{
+            padding: 1.5rem 1rem;
+
+            @include until($desktop) {
+              font-size: 1rem;
+            }
+            @include from($desktop) {
+              font-size: 1.25rem;
+            }
+            &:before {
+               content: "“";
+               font-family: Georgia;
+               font-size: 8rem;
+               margin: -3rem 0 0 -1rem;
+               position: absolute;
+               opacity: 0.25;
+            }
+          }
+
+          cite {
+           line-height: 3rem;
+          }
+        }
+      }
+    }
+
   }
-  .navbar-item{
-    font-size: 1em;
-  }
+
+
+
 }

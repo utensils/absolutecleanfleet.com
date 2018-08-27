@@ -1,0 +1,22 @@
+<section class="section">
+  <div class="container has-text-centered">
+    <div class="columns is-multiline">
+      {% for image in site.data.gallery %}
+      <div class="column is-3">
+          <figure class="image is-4by3">
+          <img src="{{image.thumb}}" class="lightbox-image" data-target="{{ image.name }}">
+          </figure>
+      </div>
+      <div class="modal" id="{{ image.name }}">
+        <div class="modal-background"></div>
+        <div class="modal-content">
+          <p class="image is-4by3">
+            <img src="{{image.url}}">
+          </p>
+        </div>
+        <button class="modal-close is-large" aria-label="close"></button>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

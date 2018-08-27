@@ -1,0 +1,20 @@
+<section class="section testimonial-section">
+  <div class="container has-text-centered">
+    <div class="carousel carousel-animated carousel-animate-slide" data-autoplay="true">
+      <div class="carousel-container">
+        {% for testimonial in site.data.testimonials %}
+          {%if testimonial.rotation %}
+          <div class="carousel-item has-background">
+            <div class="is-background testimonial">
+              <blockquote>
+                <p>{{ testimonial.comments }}</p>
+                <cite>{{ testimonial.name }}</cite>
+              </blockquote>
+            </div>
+          </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>

@@ -5,6 +5,7 @@ gem "rake"
 gem "html-proofer"
 group :jekyll_plugins do
   gem "jekyll-assets"
+  gem "jekyll-seo-tag"
   gem "kramdown"
   gem "uglifier", "~> 3.2"
 end

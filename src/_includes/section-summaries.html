@@ -1,0 +1,30 @@
+<section class="section" id="summaries">
+    <div class="columns">
+      <div class="column is-4 has-text-centered">
+        <span class="icon is-large">
+          <i class="fas fa-3x fa-info-circle"></i>
+        </span><br>
+        <h2 class="title is-3">Contact</h2>
+        <p>Phone: {{ site.contact.phone }}<br>
+        Email: {{ site.contact.email }}</p>
+
+      </div>
+      <div class="column is-middle is-4 has-text-centered">
+        <span class="icon is-large">
+          <i class="far fa-3x fa-clock"></i>
+        </span><br>
+        <h2 class="title is-3">On-time</h2>
+        <p>Always on-time, guaranteed.</p>
+      </div>
+      <div class="column is-4 has-text-centered">
+        <span class="icon is-large">
+          <i class="far fa-3x fa-address-card"></i>
+        </span><br>
+        <span class="title is-3">Credentials</span><br>
+        {% for cred in site.credentials %}
+          {{ cred }}<br>
+        {% endfor %}
+      </div>
+    </div>
+
+</section>
